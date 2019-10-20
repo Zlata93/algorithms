@@ -1,5 +1,3 @@
-console.log('Hi');
-
 const unsortedArr = [5,1,9, 0,2,-1, 7];
 function bubbleSort(arr) {
     for (let i = 0; i < arr.length - 1; i++) {
@@ -31,4 +29,17 @@ function selectionSort(arr) {
     }
     return arr;
 }
-console.log(selectionSort(unsortedArr));
+// console.log(selectionSort(unsortedArr));
+
+function insertionSort(arr) {
+    let j;
+    for (let i = 1; i < arr.length; i++) {
+        let valToInsert = arr[i];
+        for (j = i-1; j < arr.length && valToInsert < arr[j]; j--) {
+            arr[j+1] = arr[j];
+        }
+        arr[j+1] = valToInsert;
+    }
+    return arr;
+}
+console.log(insertionSort(unsortedArr));
