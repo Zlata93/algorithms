@@ -103,4 +103,27 @@ function traverseTreeBF(tree) {
     }
     return values;
 }
-console.log(traverseTreeBF(tree));
+// console.log(traverseTreeBF(tree));
+
+const unbalancedStr = '(df(s{a[1[]123]]';
+const balancedStr = '(df(s{a[1[]]})ii)';
+function balanceBrackets(str) {
+    const bracketPairs = {
+        '(': ')',
+        '[': ']',
+        '{': '}'
+    };
+    const closingBrackets = ')}]';
+    const stack = [];
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];
+        if (bracketPairs[char]) {
+            stack.push(bracketPairs[char]);
+        } else if (closingBrackets.includes(char) && char !== stack.pop()) {
+            return false;
+        }
+    }
+    return !stack.length;
+}
+console.log(balanceBrackets(unbalancedStr));
+console.log(balanceBrackets(balancedStr));
