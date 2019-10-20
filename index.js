@@ -35,7 +35,8 @@ function insertionSort(arr) {
     let j;
     for (let i = 1; i < arr.length; i++) {
         let valToInsert = arr[i];
-        for (j = i-1; j < arr.length && valToInsert < arr[j]; j--) {
+        // debugger;
+        for (j = i-1; j < arr.length && valToInsert > arr[j]; j--) {
             arr[j+1] = arr[j];
         }
         arr[j+1] = valToInsert;
