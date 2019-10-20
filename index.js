@@ -128,14 +128,14 @@ function balanceBrackets(str) {
 // console.log(balanceBrackets(unbalancedStr));
 // console.log(balanceBrackets(balancedStr));
 
-let count = 0;
 // нечетные и предыдущие primes
 function isPrime(num, primes) {
     if (num < 2) return false;
-    for (let i = 2; i <= Math.sqrt(num); i++) {
-        // count++;
-        if (num % i === 0) {
-            return false;
+    if (primes.length) {
+        for (let i = 0; i < primes.length; i++) {
+            if (num % primes[i] === 0) {
+                return false;
+            }
         }
     }
     return true;
@@ -152,5 +152,27 @@ function getPrimes(n) {
 }
 console.log(getPrimes(1000));
 console.log(getPrimes(2));
-console.log(count);
 console.log(getPrimes(1000).length);
+
+const sortedArr = [1,2,3,4,5,6,7,9];
+const emptyArr = [];
+function binarySearch(arr, num) {
+    if (!arr.length) return -1;
+    let start = 0;
+    let end = arr.length - 1;
+    while (start <= end) {
+        const middle = Math.floor((start + end)/2);
+        if (num < arr[middle]) {
+            end = middle - 1;
+        } else if (num > arr[middle]) {
+            start = middle + 1;
+        } else {
+            return middle;
+        }
+    }
+    return -1;
+}
+console.log(binarySearch(sortedArr, 1));
+console.log(binarySearch(sortedArr, 9));
+console.log(binarySearch(sortedArr, 10));
+console.log(binarySearch(emptyArr, 10));
