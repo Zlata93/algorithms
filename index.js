@@ -139,7 +139,7 @@ function isPrime(num) {
 }
 function getPrimes(n) {
     const primes = [];
-    for (let i = 2; i < n; i++) {
+    for (let i = 2; i <= n; i++) {
         if (isPrime(i)) {
             primes.push(i);
         }
