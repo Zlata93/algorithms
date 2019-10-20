@@ -1,6 +1,6 @@
 console.log('Hi');
 
-const unsortedArr = [5,1,9,0,2,-1,7];
+const unsortedArr = [5,1,9, 0,2,-1, 7];
 function bubbleSort(arr) {
     for (let i = 0; i < arr.length - 1; i++) {
         for (let j = 0; j < arr.length - i; j++) {
@@ -16,17 +16,17 @@ function bubbleSort(arr) {
 // console.log(bubbleSort(unsortedArr));
 
 function selectionSort(arr) {
-    let indexOfMax = 0;
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length - i; j++) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let indexOfMax = i;
+        for (let j = i - 1; j >= 0; j--) {
             if (arr[j] > arr[indexOfMax]) {
                 indexOfMax = j;
             }
         }
         if (i !== indexOfMax) {
-            const temp = arr[arr.length - i - 1];
-            arr[arr.length - i - 1] = arr[indexOfMax];
-            arr[indexOfMax] = temp;
+            const bigger = arr[indexOfMax];
+            arr[indexOfMax] = arr[i];
+            arr[i] = bigger;
         }
     }
     return arr;
