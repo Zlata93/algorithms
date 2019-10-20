@@ -35,12 +35,61 @@ function insertionSort(arr) {
     let j;
     for (let i = 1; i < arr.length; i++) {
         let valToInsert = arr[i];
-        // debugger;
-        for (j = i-1; j < arr.length && valToInsert > arr[j]; j--) {
+        for (j = i-1; j < arr.length && valToInsert > arr[j] && j >= 0; j--) {
             arr[j+1] = arr[j];
         }
         arr[j+1] = valToInsert;
     }
     return arr;
 }
-console.log(insertionSort(unsortedArr));
+// console.log(insertionSort(unsortedArr));
+
+const tree = {
+    root: {
+        val: 1,
+        children: [
+            {
+                val: 2,
+                children: [
+                    {
+                        val: 4,
+                        children: []
+                    },
+                    {
+                        val: 5,
+                        children: []
+                    }
+                ]
+            },
+            {
+                val: 3,
+                children: [
+                    {
+                        val: 6,
+                        children: null
+                    },{
+                        val: 7,
+                        children: null
+                    },{
+                        val: 8,
+                        children: null
+                    }
+                ]
+            }
+        ]
+    }
+};
+
+function traverseTreeDF(tree) {
+    let nodes = [tree.root];
+    const values = [];
+    while (nodes.length) {
+        const node = nodes.shift();
+        if (Array.isArray(node.children)) {
+            nodes.unshift(...node.children);
+        }
+        values.push(node.val);
+    }
+    return values;
+}
+console.log(traverseTreeDF(tree));
