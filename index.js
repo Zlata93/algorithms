@@ -52,12 +52,10 @@ const tree = {
                 val: 2,
                 children: [
                     {
-                        val: 4,
-                        children: []
+                        val: 4
                     },
                     {
-                        val: 5,
-                        children: []
+                        val: 5
                     }
                 ]
             },
@@ -66,13 +64,12 @@ const tree = {
                 children: [
                     {
                         val: 6,
-                        children: null
                     },{
                         val: 7,
-                        children: null
+                        children: []
                     },{
                         val: 8,
-                        children: null
+                        children: []
                     }
                 ]
             }
@@ -85,7 +82,7 @@ function traverseTreeDF(tree) {
     const values = [];
     while (nodes.length) {
         const node = nodes.shift();
-        if (Array.isArray(node.children)) {
+        if (node.children) {
             nodes.unshift(...node.children);
         }
         values.push(node.val);
