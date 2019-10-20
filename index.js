@@ -89,4 +89,18 @@ function traverseTreeDF(tree) {
     }
     return values;
 }
-console.log(traverseTreeDF(tree));
+// console.log(traverseTreeDF(tree));
+
+function traverseTreeBF(tree) {
+    let nodes = [tree.root];
+    const values = [];
+    while (nodes.length) {
+        const node = nodes.shift();
+        if (node.children) {
+            nodes.push(...node.children);
+        }
+        values.push(node.val);
+    }
+    return values;
+}
+console.log(traverseTreeBF(tree));
