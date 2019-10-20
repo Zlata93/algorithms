@@ -128,9 +128,12 @@ function balanceBrackets(str) {
 // console.log(balanceBrackets(unbalancedStr));
 // console.log(balanceBrackets(balancedStr));
 
-function isPrime(num) {
+let count = 0;
+// нечетные и предыдущие primes
+function isPrime(num, primes) {
     if (num < 2) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
+        // count++;
         if (num % i === 0) {
             return false;
         }
@@ -140,11 +143,14 @@ function isPrime(num) {
 function getPrimes(n) {
     const primes = [];
     for (let i = 2; i <= n; i++) {
-        if (isPrime(i)) {
+        if (i !== 2 && i % 2 === 0) continue;
+        if (isPrime(i, primes)) {
             primes.push(i);
         }
     }
     return primes;
 }
 console.log(getPrimes(1000));
+console.log(getPrimes(2));
+console.log(count);
 console.log(getPrimes(1000).length);
